@@ -1,0 +1,5 @@
+ansible
+argh
+argcomplete
+pychef
+requests
