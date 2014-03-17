@@ -6,3 +6,4 @@
   roles:
     - bonding
     - volumes
+    - laggyluke.add-ssh-keys-from-github
