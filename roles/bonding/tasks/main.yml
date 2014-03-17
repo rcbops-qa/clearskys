@@ -6,12 +6,11 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=installed
   with_items:
-    - vim
     - ifenslave-2.6
 
-- name: ensure kernel bonding persistence
+- name: prevent bond0 from loading
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  lineinfile: dest=/etc/modules regexp='bonding' line='bonding'
+  lineinfile: dest=/etc/modules regexp='bonding' line='bonding' state=absent
 
 - name: ensure kernel bonding persistence
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
