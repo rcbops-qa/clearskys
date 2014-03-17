@@ -7,4 +7,4 @@
   when: volume_group in volume_group_output.stdout
 
 - name: add volume group
-  lvg:  vg={{ volume_group }} pesize=1048576 state=present pvs={{ physical_drive }}
+  lvg:  vg={{ volume_group }} pesize=1048576 state=present pvs={{ physical_drive }} pesize=8
