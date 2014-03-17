@@ -2,8 +2,7 @@
 - hosts: all
   gather_facts: True
   vars_files:
-    - vars/bonding.yaml
-    - vars/volumes.yaml
+    - vars/build.yaml
   roles:
     - bonding
     - volumes

@@ -3,19 +3,21 @@ centos_configs:
   - ifcfg-vmnet
   - ifcfg-em1
   - ifcfg-em2
-
 centos_interfaces:
   - em1
   - em2
   - em3
   - em4
-
 ubuntu_interfaces:
   - eth0
   - eth2
   - eth4
   - eth6
-
 gateway: 10.127.101.1
 netmask: 255.255.255.0
 dns_search: sat6.lab
+add_ssh_keys_from_github:
+    usernames:
+      - cjoelrun
+      - xeregin
+      - jacobwagner
