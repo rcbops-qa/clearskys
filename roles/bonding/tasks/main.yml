@@ -1,6 +1,6 @@
 - name: check
- fail: msg="already bonded"
- when: ohai_network.default_interface == "mgmt"
+  fail: msg="already bonded"
+  when: ohai_network.default_interface == "mgmt"
 
 - name: install bonding dependencies
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
