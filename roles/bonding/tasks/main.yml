@@ -56,13 +56,9 @@
   wait_for: delay=10 host={{ inventory_hostname }} port=22
   delegate_to: localhost
 
-- name: flush interfaces
+- name: down up previous default interface
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: ifdown {{ default_interface.stderr }}
-
-- name: flush interfaces
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: ifup {{ default_interface.stderr }}
+  command: ifdown {{ default_interface.stderr }}; ifup {{ default_interface.stderr }}
 
 - name: flush interfaces
   when: ansible_distribution == 'Centos' or ansible_distribution == 'Red Hat Enterprise Linux'
