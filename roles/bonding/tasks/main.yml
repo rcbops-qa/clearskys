@@ -61,6 +61,10 @@
   command: ifdown {{ default_interface.stderr }}
 
 - name: flush interfaces
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  command: ifup {{ default_interface.stderr }}
+
+- name: flush interfaces
   when: ansible_distribution == 'Centos' or ansible_distribution == 'Red Hat Enterprise Linux'
   command: ip a f {{ item }}
   with_items: centos_interfaces
