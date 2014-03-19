@@ -3,9 +3,12 @@
 import argh
 from chef import Node, autoconfigure
 
-def hosts(env=None):
+def hosts(env=None, name=None):
     api = autoconfigure()
-    nodes = (node for node in Node.list() if Node(node).chef_environment == env)
+    if name:
+        nodes = (node for node in Node.list() if Node(node).name == name)
+    else:
+        nodes = (node for node in Node.list() if Node(node).chef_environment == env)
 
     file = open("hosts", "w")
     file.write("[hosts]\n")
