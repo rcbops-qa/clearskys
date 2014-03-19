@@ -2,6 +2,10 @@
   fail: msg="already bonded"
   when: ohai_network.default_interface == "mgmt"
 
+- name: save default interface
+  command: "echo {{ ohai_networks.default_interface }}"
+  register: default_interface
+
 - name: install bonding dependencies
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=installed
@@ -54,8 +58,7 @@
 
 - name: flush interfaces
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: ip a f {{ item }}
-  with_items: ubuntu_interfaces
+  command: ifdown {{ default_interface.stderr }}
 
 - name: flush interfaces
   when: ansible_distribution == 'Centos' or ansible_distribution == 'Red Hat Enterprise Linux'
