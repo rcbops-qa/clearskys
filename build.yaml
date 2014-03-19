@@ -5,5 +5,5 @@
     - vars/bonding.yaml
     - vars/volumes.yaml
   roles:
-    - bonding
     - volumes
+    - bonding
