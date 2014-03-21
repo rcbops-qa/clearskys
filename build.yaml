@@ -6,6 +6,7 @@
     - vars/bonding.yaml
     - vars/volumes.yaml
   roles:
+    - common
     - laggyluke.add-ssh-keys-from-github
     - volumes
     - bonding

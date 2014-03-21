@@ -3,7 +3,7 @@
   when: ohai_network.default_interface == "mgmt"
 
 - name: save default interface
-  command: "echo {{ ohai_networks.default_interface }}"
+  command: "echo {{ ohai_network.default_interface }}"
   register: default_interface
 
 - name: install bonding dependencies
@@ -59,6 +59,11 @@
 - name: down up previous default interface
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   command: ifdown {{ default_interface.stderr }}; ifup {{ default_interface.stderr }}
+
+- name: flush interfaces
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  command: ip a f {{ item }}
+  with_items: ubuntu_interfaces
 
 - name: flush interfaces
   when: ansible_distribution == 'Centos' or ansible_distribution == 'Red Hat Enterprise Linux'
