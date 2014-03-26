@@ -6,9 +6,9 @@ centos_configs:
 
 centos_interfaces:
   - em1
-  - em2
   - em3
-  - em4
+  - p1p2
+  - p3p2
 
 ubuntu_interfaces:
   - eth0

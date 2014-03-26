@@ -1,6 +1,7 @@
-DEVICE="em4"
+DEVICE="p1p2"
 BOOTPROTO="none"
 ONBOOT="yes"
 USERCTL="no"
 MASTER="vmnet"
 SLAVE="yes"
+NM_CONTROLLED=no
