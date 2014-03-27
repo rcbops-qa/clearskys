@@ -1,7 +1,3 @@
-# - name: check
-#   fail: msg="already bonded"
-#   when: ohai_network.default_interface == "mgmt"
-
 - name: save default interface
   command: "echo {{ ohai_network.default_interface }}"
   register: default_interface
