@@ -7,4 +7,4 @@
     - common
     - laggyluke.add-ssh-keys-from-github
     - volumes
-    - bonding
+    - { role: bonding, when: ohai_network.default_interface != "mgmt" }
