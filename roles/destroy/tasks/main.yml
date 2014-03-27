@@ -1,6 +1,6 @@
 ---
 - name: delete razor node
-  local_action: command python razor.py {{ razor_api }} {{ ansible_hostname.split('.')[0] }}
+  command: razor delete-node --name {{ ansible_hostname.split('.')[0] }}
 
 - name: delete chef node
   local_action: command knife node delete -y {{ ansible_fqdn }}

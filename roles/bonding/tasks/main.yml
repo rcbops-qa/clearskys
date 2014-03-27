@@ -1,6 +1,10 @@
-- name: check
- fail: msg="already bonded"
- when: ohai_network.default_interface == "mgmt"
+# - name: check
+#   fail: msg="already bonded"
+#   when: ohai_network.default_interface == "mgmt"
+
+- name: save default interface
+  command: "echo {{ ohai_network.default_interface }}"
+  register: default_interface
 
 - name: install bonding dependencies
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -46,6 +50,7 @@
   poll: 0
 
 - name: add default route
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   command: route add default gw {{ gateway }} dev mgmt
 
 - name: wait for reconnect
@@ -54,10 +59,8 @@
 
 - name: flush interfaces
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: ip a f {{ item }}
-  with_items: ubuntu_interfaces
+  command: ip a f eth0
 
-- name: flush interfaces
-  when: ansible_distribution == 'Centos' or ansible_distribution == 'Red Hat Enterprise Linux'
-  command: ip a f {{ item }}
-  with_items: centos_interfaces
+- name: cycle previous default interface
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  shell: '(ifdown eth0; ifup eth0) &'
