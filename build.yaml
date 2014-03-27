@@ -2,13 +2,7 @@
 - hosts: all
   gather_facts: True
   vars_files:
-<<<<<<< HEAD
-    - vars/build.yaml
-=======
-    - vars/main.yaml
-    - vars/bonding.yaml
-    - vars/volumes.yaml
->>>>>>> 7f53230d3e799d7fc42664f587816f50b4b6b57b
+    - vars/config.yaml
   roles:
     - common
     - laggyluke.add-ssh-keys-from-github
