@@ -9,3 +9,6 @@
   with_items:
     - python-pip
     - libselinux-python
+
+- name: disable selinux enforcement
+  selinux: policy=targeted state=permissive
