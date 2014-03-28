@@ -1,7 +1,3 @@
-- name: save default interface
-  command: "echo {{ ohai_network.default_interface }}"
-  register: default_interface
-
 - name: install bonding dependencies
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=installed
