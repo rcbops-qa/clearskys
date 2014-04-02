@@ -11,6 +11,7 @@
     - libselinux-python
 
 - name: disable selinux enforcement
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   selinux: policy=targeted state=permissive
 
 - name: really disable selinux enforcement
