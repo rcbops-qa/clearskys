@@ -8,3 +8,4 @@
     - laggyluke.add-ssh-keys-from-github
     - volumes
     - { role: bonding, when: ohai_network.default_interface != "mgmt" }
+    - kernel
