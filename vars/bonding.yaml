@@ -1,0 +1,39 @@
+# All Centos / RHEL configurations
+
+centos_interfaces:
+  curr_exnet_iface: em1
+  mgmt:
+    bond:
+      - em1
+      - em3
+  vmnet:
+    bond:
+      - p1p2
+      - p3p2
+  storage:
+    bond:
+      - p1p1
+      - p3p1
+
+# All Ubuntu / Debian Configurations
+ubuntu_interfaces:
+  curr_exnet_iface:
+    -eth0
+  mgmt:
+    bond:
+      - eth0
+      - eth2
+  vmnet:
+    bond:
+      - eth4
+      - eth6
+  storage:
+    bond:
+      - eth5
+      - eth7
+
+# Common Networking Configurations
+networking:
+  gateway: 10.127.101.1
+  netmask: 255.255.255.0
+  dns_search: sat6.lab
