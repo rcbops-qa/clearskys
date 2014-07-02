@@ -10,6 +10,16 @@ centos:
   storage:
     primary_iface: p1p1
     secondary_iface: p3p1
+  configs:
+    - ifcfg-mgmt
+    - ifcfg-vmnet
+    - ifcfg-storage
+    - ifcfg-em1
+    - ifcfg-em3
+    - ifcfg-p1p1
+    - ifcfg-p1p2
+    - ifcfg-p3p1
+    - ifcfg-p3p2
 
 # All Ubuntu / Debian Configurations
 ubuntu:

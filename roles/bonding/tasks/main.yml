@@ -27,7 +27,7 @@
 - name: setup interfaces
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   template: src={{ item }}.j2 dest=/etc/sysconfig/network-scripts/{{ item }} owner=root group=root mode=0644
-  with_items: centos_configs
+  with_items: centos.configs
 
 - name: restart networking
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -43,7 +43,7 @@
 
 - name: add default route
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: route add default gw {{ gateway }} dev mgmt
+  command: route add default gw {{ network.gateway }} dev {{ ubuntu.mgmt.bond_name }}
 
 - name: wait for reconnect
   wait_for: delay=10 host={{ inventory_hostname }} port=22
@@ -51,8 +51,8 @@
 
 - name: flush interfaces
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: ip a f eth0
+  command: ip a f {{ ubuntu.ip_iface }}
 
 - name: cycle previous default interface
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  shell: '(ifdown eth0; ifup eth0) &'
+  shell: '(ifdown {{ ubuntu.ip_iface }}; ifup {{ ubuntu.ip_iface }}) &'
