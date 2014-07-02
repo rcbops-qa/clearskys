@@ -1,39 +1,40 @@
 # All Centos / RHEL configurations
-
-centos_interfaces:
-  curr_exnet_iface: em1
+centos:
+  ip_iface: em1
   mgmt:
-    bond:
-      - em1
-      - em3
+    bond_name: mgmt
+    primary_iface: em1
+    secondary_iface: em3
   vmnet:
-    bond:
-      - p1p2
-      - p3p2
+    bond_name: vmnet
+    primary_iface: p1p2
+    secondary_iface: p3p2
   storage:
-    bond:
-      - p1p1
-      - p3p1
+    bond_name: storage
+    primary_iface: p1p1
+    secondary_iface: p3p1
 
 # All Ubuntu / Debian Configurations
-ubuntu_interfaces:
-  curr_exnet_iface:
-    -eth0
+ubuntu:
+  ip_iface: eth0
   mgmt:
-    bond:
-      - eth0
-      - eth2
+    bond_name: mgmt
+    primary_iface: eth0
+    secondary_iface: eth2
   vmnet:
-    bond:
-      - eth4
-      - eth6
+    bond_name: vmnet
+    primary_iface: eth4
+    secondary_iface: eth6
   storage:
-    bond:
-      - eth5
-      - eth7
+    bond_name: storage
+    primary_iface: eth5
+    secondary_iface: eth7
 
 # Common Networking Configurations
-networking:
+network:
   gateway: 10.127.101.1
   netmask: 255.255.255.0
-  dns_search: sat6.lab
+  dns:
+    primary: 8.8.8.8
+    secondary: 8.8.4.4
+    search: sat6.lab
