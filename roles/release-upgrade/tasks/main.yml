@@ -3,7 +3,7 @@
   apt: update_cache=yes
 
 - name: update to latest release
-  command: do-release-upgrade -f DistUpgradeViewNonInteractive
+  command: do-release-upgrade -d -f DistUpgradeViewNonInteractive
   async: 600
   poll: 10
 
