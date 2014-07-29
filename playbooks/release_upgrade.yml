@@ -2,4 +2,4 @@
 - hosts: all
   gather_facts: True
   roles:
-    - { role: release-upgrade, when: ansible_distribution_release != "trusty" }
+    - { role: release-upgrade, when: ansible_distribution_release == "precise" }
