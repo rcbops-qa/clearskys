@@ -7,12 +7,13 @@ from chef import Node, autoconfigure
 
 
 def hosts(env=None, name=None):
-    autoconfigure()
+    api = autoconfigure()
     if name:
         nodes = (node for node in Node.list() if name in Node(node).name)
     else:
         nodes = (
-            node for node in Node.list() if Node(node).chef_environment == env)
+            node for node in Node.list() if
+            Node(node, api=api).chef_environment == env)
 
     file = open("hosts", "w")
     file.write("[hosts]\n")
