@@ -1,0 +1,7 @@
+---
+-  name: uninstall chef client
+   command: rm -rf {{ item }} removes={{ item }}
+   with_items:
+    - /etc/chef
+    - /var/chef
+    - /opt/chef
