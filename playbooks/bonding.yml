@@ -4,4 +4,4 @@
   vars_files:
     - vars/bonding.yml
   roles:
-    - { role: bonding, when: ohai_network.default_interface != "br-mgmt" }
+    - { role: bonding, when: ansible_default_ipv4.interface != "br-mgmt" }
