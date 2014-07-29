@@ -1,5 +1,13 @@
 ---
--  name: uninstall chef client
+- name: uninstall chef client
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  apt: pkg=chef state=absent
+
+- name: install pip
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  yum: pkg=chef state=absent
+
+-  name: remove all directories associated with chef
    command: rm -rf {{ item }} removes={{ item }}
    with_items:
     - /etc/chef
