@@ -43,7 +43,7 @@
 
 - name: add default route
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: route add default gw {{ network.gateway }} dev {{ ubuntu.mgmt.bond_name }}
+  command: route add default gw {{ network.gateway }} dev {{ network.mgmt.bond_name }}
 
 - name: wait for reconnect
   wait_for: delay=10 host={{ inventory_hostname }} port=22

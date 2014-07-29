@@ -1,6 +1,7 @@
 ---
 - include: common.yml
 - include: keys.yml
-- include: volumes.yml
+# need to fix this (something wrong with the vg module)
+#- include: volumes.yml
 - include: bonding.yml
 - include: release_upgrade.yml
