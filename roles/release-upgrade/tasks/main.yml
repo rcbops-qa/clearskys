@@ -6,7 +6,6 @@
   command: do-release-upgrade -d -f DistUpgradeViewNonInteractive
   async: 600
   poll: 60
-  when: ansible_distribution_release != "trusty"
 
 - name: reboot server
   command: reboot
