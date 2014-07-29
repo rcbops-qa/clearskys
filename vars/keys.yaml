@@ -4,3 +4,4 @@ add_ssh_keys_from_github:
       - xeregin
       - jacobwagner
       - jpmontez
+      - schofield

@@ -1,2 +1,2 @@
-volume_group: vg_storage
+volume_group: cinder-volumes
 physical_drive: /dev/sdb
