@@ -30,4 +30,3 @@ ubuntu:
                 - linux-headers-3.13.0-*-generic
             image:
                 - linux-image-3.13.0-*-generic
-
