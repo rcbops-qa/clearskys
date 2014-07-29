@@ -2,6 +2,6 @@
 - hosts: all
   gather_facts: True
   vars_files:
-    - vars/bonding.yaml
+    - vars/bonding.yml
   roles:
     - { role: bonding, when: ohai_network.default_interface != "mgmt" }

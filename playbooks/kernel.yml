@@ -2,6 +2,6 @@
 - hosts: all
   gather_facts: True
   vars_files:
-    - vars/config.yaml
+    - vars/config.yml
   roles:
     - kernel

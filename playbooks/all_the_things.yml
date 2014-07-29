@@ -1,0 +1,6 @@
+---
+- include: common.yml
+- include: keys.yml
+- include: volumes.yml
+- include: bonding.yml
+- include: release_upgrade.yml
