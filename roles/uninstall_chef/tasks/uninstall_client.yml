@@ -1,0 +1,3 @@
+---
+-  name: uninstall chef client
+   command: rm -rf /etc/chef /var/chef /opt/chef

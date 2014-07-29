@@ -4,3 +4,6 @@
 
 - name: update to latest release
   command: do-release-upgrade -d -f DistUpgradeViewNonInteractive
+
+- name: reboot server
+  command: reboot

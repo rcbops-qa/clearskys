@@ -4,4 +4,6 @@
 # need to fix this (something wrong with the vg module)
 #- include: volumes.yml
 - include: bonding.yml
-- include: release_upgrade.yml
+- include: uninstall_chef.yml
+# This doesnt work, need to fix
+#- include: release_upgrade.yml
