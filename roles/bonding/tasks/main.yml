@@ -33,13 +33,11 @@
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   service: name=networking state=restarted
   async: 45
-  poll: 5
 
 - name: restart networking
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   service: name=network state=restarted
   async: 45
-  poll: 5
 
 - name: add default route
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
