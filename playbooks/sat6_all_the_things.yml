@@ -3,7 +3,7 @@
 - include: keys.yml
 # need to fix this (something wrong with the vg module)
 #- include: volumes.yml
-- include: bonding.yml
 - include: uninstall_chef.yml
+- include: bonding.yml
 # This doesnt work, need to fix
 #- include: release_upgrade.yml
