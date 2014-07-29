@@ -4,6 +4,8 @@
 
 - name: update to latest release
   command: do-release-upgrade -d -f DistUpgradeViewNonInteractive
+  async: 600
+  poll: 60
 
 - name: reboot server
   command: reboot
