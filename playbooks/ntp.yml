@@ -1,6 +1,5 @@
+---
 - hosts: all
   gather_facts: True
-  vars_files:
-    - vars/ntp.yml
   roles:
-    - { role: geerlingguy.ntp }
+    - resmo.ansible-role-ntp
