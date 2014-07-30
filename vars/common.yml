@@ -1,5 +1,5 @@
 ## Packages to install on all hosts
-all_hosts:
+all:
    - bridge-utils
    - ntp
    - ntpdate
@@ -8,7 +8,7 @@ all_hosts:
    - vim
 
 ## Packages to install on deployment hosts
-deployment_hosts:
+deployment:
    - aptitude
    - build-essential
    - git
@@ -16,6 +16,6 @@ deployment_hosts:
    - python-pip
 
 ## Packages to install on target hosts
-target_hosts:
+target:
     - lsof
     - tcpdump

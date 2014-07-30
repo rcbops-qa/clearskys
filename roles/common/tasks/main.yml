@@ -2,16 +2,16 @@
 - name: install packages that are for all hosts
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=present
-  with_items: all
+  with_items: {{ all }}
 
 - name: install packages that are for deployment hosts
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=present
-  with_items: deployment
+  with_items: {{ deployment }}
   tags: deployment
 
 - name: install packages that are for target hosts
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=present
-  with_items: target
+  with_items: {{ target }}
   tags: target
