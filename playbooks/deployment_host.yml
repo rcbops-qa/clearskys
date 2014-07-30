@@ -1,5 +1,5 @@
 ---
 - hosts: deployment
-- roles:
+  roles:
     - update
     - { role: common, tags: deployment}
