@@ -6,3 +6,5 @@
 - include: uninstall_chef.yml
 - include: bonding.yml
 - include: release_upgrade.yml
+- include: reboot.yml
+- include: update.yml
