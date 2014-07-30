@@ -1,14 +1,35 @@
 ---
-- name: install pip
+- name: install useful packages
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  apt: pkg=python-pip state=installed
-
-- name: install pip
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-  yum: pkg=$item state=installed
+  apt: pkg=$item state=present
   with_items:
+    - aptitude
+    - bridge-utils
+    - build-essential
+    - git
+    - ntp
+    - ntpdate
+    - python-dev
     - python-pip
-    - libselinux-python
+    - ssh
+    - sudo
+    - vim
+
+- name: install useful packages
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  yum: pkg=$item state=present
+  with_items:
+    - yum
+    - bridge-utils
+    - build-essential
+    - git
+    - ntp
+    - ntpdate
+    - python-dev
+    - python-pip
+    - ssh
+    - sudo
+    - vim
 
 - name: install vim
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
