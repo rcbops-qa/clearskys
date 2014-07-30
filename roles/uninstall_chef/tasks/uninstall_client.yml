@@ -1,11 +1,11 @@
 ---
 - name: uninstall chef client
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  apt: pkg=chef state=absent
+  apt: pkg=chef state=absent purge=yes
 
 - name: install pip
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-  yum: pkg=chef state=absent
+  yum: pkg=chef state=absent purge=yes
 
 -  name: remove all directories associated with chef
    command: rm -rf {{ item }} removes={{ item }}
