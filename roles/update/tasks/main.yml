@@ -3,4 +3,4 @@
   apt: update_cache=yes
 
 - name: update packages
-  apt: upgrade=full
+  apt: upgrade=dist
