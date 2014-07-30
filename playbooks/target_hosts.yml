@@ -1,3 +1,5 @@
 ---
-- include: update.yml
-- include: common.yml
+- hosts: target
+- roles:
+    - update
+    - { role: common, tags: target}
