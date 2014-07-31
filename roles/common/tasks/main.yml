@@ -1,4 +1,7 @@
 ---
+- name: update apt cache
+  apt: update_cache=yes
+
 - name: install packages that are for all hosts
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=present

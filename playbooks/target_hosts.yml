@@ -1,4 +1,8 @@
 ---
 - hosts: target
-- include: update.yml
-- include: common.yml tags=target
+  gather_facts: True
+  vars_files:
+    - vars/common.yml
+  roles:
+    - { role: common, tags: target}
+    - update

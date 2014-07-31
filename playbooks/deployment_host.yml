@@ -1,5 +1,8 @@
 ---
 - hosts: deployment
+  gather_facts: True
+  vars_files:
+    - vars/common.yml
   roles:
-    - update
     - { role: common, tags: deployment}
+    - update
