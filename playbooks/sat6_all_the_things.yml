@@ -8,3 +8,4 @@
 - include: release_upgrade.yml
 - include: reboot.yml
 - include: update.yml
+- include: populate.yml
