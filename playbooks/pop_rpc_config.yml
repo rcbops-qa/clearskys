@@ -1,5 +1,4 @@
 ---
-- hosts: target
-  gather_facts: True
+- hosts: all
   roles:
-    - rpc_config
+    - populate
