@@ -8,4 +8,3 @@
 - include: release_upgrade.yml
 - include: reboot.yml
 - include: update.yml
-- include: pop_rpc_config.yml
