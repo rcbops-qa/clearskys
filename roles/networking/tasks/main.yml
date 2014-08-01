@@ -61,8 +61,8 @@
 
 - name: flush interfaces
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  command: ip a f {{ ubuntu.ip_iface }}
+  command: ip a f {{ ansible_default_ipv4.interface }}
 
 - name: cycle previous default interface
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
-  shell: '(ifdown {{ ubuntu.ip_iface }}; ifup {{ ubuntu.ip_iface }}) &'
+  shell: '(ifdown {{ ansible_default_ipv4.interface }}; ifup {{ ansible_default_ipv4.interface }}) &'
