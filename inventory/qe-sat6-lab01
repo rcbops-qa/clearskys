@@ -1,4 +1,4 @@
-[deployment_hosts]
+[deployment_host]
 10.127.101.23
 
 [deployment:vars]
