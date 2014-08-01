@@ -1,0 +1,40 @@
+---
+# User defined CIDR used for containers
+cidr: {{ cidr }}
+
+# User defined Infrastructure Hosts, this should be a required group
+infra_hosts:
+  infra1:
+    ip: {{ hostvars[groups['deployment'][0]]['ansible_eth0']['ipv4']['address'] }}
+  infra2:
+    ip: {{ hostvars[groups['target'][1]]['ansible_eth0']['ipv4']['address'] }}
+  infra3:
+    ip: {{ hostvars[groups['target'][2]]['ansible_eth0']['ipv4']['address'] }}
+
+# User defined Compute Hosts, this should be a required group
+compute_hosts:
+  compute1:
+    ip: {{ hostvars[groups['target'][3]]['ansible_eth0']['ipv4']['address'] }}
+  compute2:
+    ip: {{ hostvars[groups['target'][4]]['ansible_eth0']['ipv4']['address'] }}
+
+# User defined Storage Hosts, this should be a required group
+storage_hosts:
+  cinder1:
+    ip: {{ hostvars[groups['target'][5]]['ansible_eth0']['ipv4']['address'] }}
+    container_vars:
+      cinder_backends:
+        limit_container_types: cinder_volume
+        lvm:
+          volume_group: cinder-volumes
+          driver: cinder.volume.drivers.lvm.LVMISCSIDriver
+          backend_name: LVM_iSCSI
+
+# User defined Logging Hosts, this should be a required group
+log_hosts:
+  logger1:
+    ip: {{ hostvars[groups['target'][6]]['ansible_eth0']['ipv4']['address'] }}
+
+haproxy_hosts:
+  haproxy1:
+    ip: {{ hostvars[groups['target'][7]]['ansible_eth0']['ipv4']['address'] }}
