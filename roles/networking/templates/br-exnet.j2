@@ -4,7 +4,7 @@ auto {{ network.exnet.bridge_name }}
 iface {{ network.exnet.bridge_name }} inet manual
     up ip link set $IFACE up
     down ip link set $IFACE down
-    bridge_ports {{ network.vmnet.bond_name }} (this would be ethX, bondX, or bondX.vlanY)
+    bridge_ports {{ network.vmnet.bond_name }}
     bridge_stp off
     bridge_fd 0
     bridge_maxwait 0

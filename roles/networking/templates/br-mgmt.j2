@@ -7,7 +7,7 @@ iface {{ network.mgmt.bridge_name }} inet static
     gateway {{ network.gateway }}
     dns-nameservers {{ network.dns.primary }} {{ network.dns.secondary }}
     dns-search {{ network.dns.search }}
-    bridge_ports {{ network.mgmt.bond_name }} (this would be ethX, bondX, or bondX.vlanY)
+    bridge_ports {{ network.mgmt.bond_name }}
     bridge_stp off
     bridge_fd 0
     bridge_maxwait 0
