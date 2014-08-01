@@ -5,7 +5,7 @@ cidr: {{ cidr }}
 # User defined Infrastructure Hosts, this should be a required group
 infra_hosts:
   infra1:
-    ip: {{ hostvars[groups['deployment_hosts'][0]]['ansible_mgmt']['ipv4']['address'] }}
+    ip: {{ hostvars[groups['deployment_host'][0]]['ansible_mgmt']['ipv4']['address'] }}
   infra2:
     ip: {{ hostvars[groups['target_hosts'][1]]['ansible_mgmt']['ipv4']['address'] }}
   infra3:
