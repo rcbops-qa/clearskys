@@ -1,0 +1,8 @@
+# {{ network.vmnet.bridge_name }} is the bridge NIC and can be used like any other normal NIC.
+# {{ network.vmnet.bridge_name }} is configured using static network information.
+auto {{ network.vmnet.bridge_name }}
+iface {{ network.vmnet.bridge_name }} inet static
+    bridge_ports {{ network.vmnet.bond_name }} (this would be ethX, bondX, or bondX.vlanY)
+    bridge_stp off
+    bridge_fd 0
+    bridge_maxwait 0

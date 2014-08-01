@@ -1,10 +1,10 @@
-[deployment]
+[deployment_hosts]
 10.127.101.22
 
 [deployment:vars]
 cidr=10.127.101.0/24
 
-[target]
+[target_hosts]
 10.127.101.22
 10.127.101.17
 10.127.101.24

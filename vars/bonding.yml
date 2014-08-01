@@ -33,6 +33,13 @@ ubuntu:
   storage:
     primary_iface: eth5
     secondary_iface: eth7
+  configs:
+    - loopback
+    - mgmt
+    - vmnet
+    - br-mgmt
+    - br-vmnet
+    - br-exnet
 
 # Common Networking Configurations
 network:
@@ -44,7 +51,13 @@ network:
     search: sat6.lab
   mgmt:
     bond_name: mgmt
+    bridge_name: br-mgmt
   vmnet:
     bond_name: vmnet
+    bridge_name: br-vmnet
+  exnet:
+    bond_name: exnet
+    bridge_name: br-exnet
   storage:
     bond_name: storage
+    bridge_name: br-storage

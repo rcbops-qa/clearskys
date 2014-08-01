@@ -1,0 +1,8 @@
+# {{ network.exnet.bridge_name }} is the bridge NIC and can be used like any other normal NIC.
+# {{ network.exnet.bridge_name }} is configured using static network information.
+auto {{ network.exnet.bridge_name }}
+iface {{ network.exnet.bridge_name }} inet static
+    bridge_ports {{ network.exnet.bond_name }} (this would be ethX, bondX, or bondX.vlanY)
+    bridge_stp off
+    bridge_fd 0
+    bridge_maxwait 0

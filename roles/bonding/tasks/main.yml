@@ -1,8 +1,9 @@
-- name: install bonding dependencies
+- name: install bonding / bridge dependencies
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   apt: pkg={{ item }} state=installed
   with_items:
     - ifenslave-2.6
+    - bridge-utils
 
 - name: prevent bond0 from loading
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
@@ -20,11 +21,20 @@
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   command: modprobe bonding mode=active-backup miimon=100 downdelay=200 updelay=200
 
-- name: setup interfaces
+- name: ensure /etc/network/interfaces.d exists
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  file: path=/etc/network/interfaces.d state=directory owner=root mode=0655
+
+- name: setup interfaces file
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
   template: src=interfaces.j2 dest=/etc/network/interfaces owner=root group=root mode=0644
 
-- name: setup interfaces
+- name: setup interface config files
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  template: src={{ item }}.j2 dest=/etc/network/interfaces.d/{{ item }} owner=root group=root mode=0644
+  with_items: ubuntu.configs
+
+- name: setup interfaces network scripts
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
   template: src={{ item }}.j2 dest=/etc/sysconfig/network-scripts/{{ item }} owner=root group=root mode=0644
   with_items: centos.configs
