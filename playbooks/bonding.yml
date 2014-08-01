@@ -1,7 +1,0 @@
----
-- hosts: all
-  gather_facts: True
-  vars_files:
-    - vars/bonding.yml
-  roles:
-    - { role: bonding, when: ansible_default_ipv4.interface != "br-mgmt" }
