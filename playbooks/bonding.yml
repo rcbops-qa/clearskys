@@ -4,4 +4,4 @@
   vars_files:
     - vars/bonding.yml
   roles:
-    - { role: bonding, when: ansible_default_ipv4.interface != "mgmt" }
+    - { role: bonding, when: ansible_default_ipv4.interface != "br-mgmt" }
