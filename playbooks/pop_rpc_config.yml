@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: deployment
   gather_facts: True
   roles:
     - rpc_config
