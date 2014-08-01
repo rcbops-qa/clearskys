@@ -3,4 +3,4 @@
   file: path=/etc/rpc_deploy state=directory
 
 - name: install rpc user config
-  template: src=rpc_user_config.yml.j2 dest=~/Desktop/rpc_user_config.yml
+  template: src=rpc_user_config.yml.j2 dest=/etc/rpc_deploy/rpc_user_config.yml
