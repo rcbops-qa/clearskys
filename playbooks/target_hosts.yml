@@ -1,5 +1,5 @@
 ---
-- hosts: target
+- hosts: target_hosts
   gather_facts: True
   vars_files:
     - vars/common.yml
