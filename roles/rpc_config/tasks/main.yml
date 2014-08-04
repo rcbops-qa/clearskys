@@ -2,5 +2,8 @@
 - name: create rpc deploy folder
   file: path=/etc/rpc_deploy state=directory owner=root mode=0655
 
-- name: install rpc user config
+- name: install rpc environment file
+  template: src=rpc_environment.j2 dest=/etc/rpc_deploy/rpc_environment.yml owner=root mode=0644
+
+- name: install rpc user config file
   template: src=rpc_user_config.j2 dest=/etc/rpc_deploy/rpc_user_config.yml owner=root mode=0644
