@@ -21,6 +21,7 @@ compute_hosts:
 # User defined Storage Hosts, this should be a required group
 storage_hosts:
   cinder1:
+    ip: {{ hostvars[groups['target_hosts'][5]]['ansible_br_mgmt']['ipv4']['address'] }}
     {% if 'lvm' in cinder_backend %}
       {% block lvm %}{% endblock %}
     {% else %}
