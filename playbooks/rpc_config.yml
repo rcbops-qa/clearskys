@@ -1,5 +1,5 @@
 ---
-- hosts: infra:compute:cinder:logger:haproxy
+- hosts: deployment
   gather_facts: True
   vars_files:
     - vars/rpc_config.yml

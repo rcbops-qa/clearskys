@@ -26,6 +26,7 @@ cinder_hosts:
 {% for host in cinder %}
   cinder{{ loop.index }}:
     ip: {{ host }}
+    {% block cinder_backend %}{% endblock %}
 {% endfor %}
 
 # User defined Logger Hosts, this should be a required group
