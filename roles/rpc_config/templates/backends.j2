@@ -1,4 +1,14 @@
-{% extends "rpc_user_config" %}
+{% extends "rpc_user_config.j2" %}
+{% block lvm %}
+container_vars:
+  cinder_backends:
+    limit_container_types: cinder_volume
+    lvm:
+      volume_group: {{ cinder.volume_group }}
+      driver: cinder.volume.drivers.lvm.LVMISCSIDriver
+      backend_name: LVM_iSCSI
+{% endblock %}
+{% block netapp %}
 container_vars:
   cinder_backends:
     limit_container_type: cinder_volume
@@ -11,3 +21,4 @@ container_vars:
       netapp_password: "{{ cinder_netapp_password }}"
       driver: cinder.volume.drivers.netapp.common.NetAppDriver
       backend_name: NETAPP_iSCSI
+{% endblock %}

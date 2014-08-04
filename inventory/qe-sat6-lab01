@@ -3,6 +3,7 @@
 
 [deployment:vars]
 cidr=192.168.1.0/24
+cinder_backend=lvm
 
 [infra]
 10.127.101.23
@@ -15,9 +16,6 @@ cidr=192.168.1.0/24
 
 [cinder]
 10.127.101.8
-
-[cinder:vars]
-cinder_backend=lvm
 
 [logger]
 10.127.101.25
