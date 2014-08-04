@@ -21,14 +21,7 @@ compute_hosts:
 # User defined Storage Hosts, this should be a required group
 storage_hosts:
   cinder1:
-    ip: {{ hostvars[groups['target_hosts'][5]]['ansible_br-mgmt']['ipv4']['address'] }}
-    container_vars:
-      cinder_backends:
-        limit_container_types: cinder_volume
-        lvm:
-          volume_group: {{ cinder.volume_group }}
-          driver: cinder.volume.drivers.lvm.LVMISCSIDriver
-          backend_name: LVM_iSCSI
+    {% block {{ cinder_backend }} %}{% endblock %}
 
 # User defined Logging Hosts, this should be a required group
 log_hosts:
