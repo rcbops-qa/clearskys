@@ -3,7 +3,7 @@
 
 [deployment:vars]
 cidr=192.168.2.0/24
-cinder_backends=netapp
+cinder_backend=netapp
 
 [infra]
 10.127.101.22

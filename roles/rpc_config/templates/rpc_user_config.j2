@@ -1,11 +1,11 @@
 ---
-# User defined CIDR used for containers
-cidr: {{ cidr }}
 {% set infra = groups['infra'] %}
 {% set compute = groups['compute'] %}
 {% set cinder = groups['cinder'] %}
 {% set logger = groups['logger'] %}
 {% set haproxy = groups['haproxy'] %}
+# User defined CIDR used for containers
+cidr: {{ cidr }}
 
 # User defined Infrastructure Hosts, this should be a required group
 infra_hosts:
@@ -26,7 +26,25 @@ cinder_hosts:
 {% for host in cinder %}
   cinder{{ loop.index }}:
     ip: {{ host }}
-    {% block cinder_backend %}{% endblock %}
+    container_vars:
+      cinder_backends:
+        limit_container_type: cinder_volume
+{% if 'lvm' in cinder_backend %}
+        lvm:
+          volume_group: {{ volume_group }}
+          driver: cinder.volume.drivers.lvm.LVMISCSIDriver
+          backend_name: LVM_iSCSI
+{% else %}
+        netapp:
+          netapp_storage_family: ontap_7mode
+          netapp_storage_protocol: iscsi
+          netapp_server_hostname: {{ netapp_hostname }}
+          netapp_server_port: 80
+          netapp_login: {{ netapp_username }}
+          netapp_password: {{ netapp_password }}
+          driver: cinder.volume.drivers.netapp.common.NetAppDriver
+          backend_name: NETAPP_iSCSI
+{% endif %}
 {% endfor %}
 
 # User defined Logger Hosts, this should be a required group
