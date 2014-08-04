@@ -21,7 +21,11 @@ compute_hosts:
 # User defined Storage Hosts, this should be a required group
 storage_hosts:
   cinder1:
-    {% block ${ cinder_backend } %}{% endblock %}
+    {% if 'lvm' in cinder_backend %}
+      {% block 'lvm' %}{% endblock %}
+    {% else %}
+      {% block 'netapp' %}{% endblock %}
+    {% endif %}
 
 # User defined Logging Hosts, this should be a required group
 log_hosts:
