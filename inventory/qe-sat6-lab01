@@ -3,6 +3,7 @@
 
 [deployment_host:vars]
 cidr=10.127.101.0/24
+cinder_backend=lvm
 
 [target_hosts]
 10.127.101.23

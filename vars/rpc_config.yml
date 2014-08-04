@@ -1,0 +1,2 @@
+cinder:
+    volume_group: vg_storage

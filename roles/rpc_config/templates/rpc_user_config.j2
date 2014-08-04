@@ -26,7 +26,7 @@ storage_hosts:
       cinder_backends:
         limit_container_types: cinder_volume
         lvm:
-          volume_group: cinder-volumes
+          volume_group: {{ cinder.volume_group }}
           driver: cinder.volume.drivers.lvm.LVMISCSIDriver
           backend_name: LVM_iSCSI
 
