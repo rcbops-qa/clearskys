@@ -21,7 +21,7 @@ compute_hosts:
 # User defined Storage Hosts, this should be a required group
 storage_hosts:
   cinder1:
-    {% block {{ cinder_backend }} %}{% endblock %}
+    {% block {% cinder_backend %} %}{% endblock %}
 
 # User defined Logging Hosts, this should be a required group
 log_hosts:
