@@ -1,17 +1,24 @@
-[deployment_host]
+[deployment]
 10.127.101.23
 
-[deployment_host:vars]
+[deployment:vars]
 cidr=192.168.1.0/24
-cinder_backend=lvm
+cinder_backends=lvm
 
-
-[target_hosts]
+[infra]
 10.127.101.23
 10.127.101.42
 10.127.101.18
+
+[compute]
 10.127.101.58
 10.127.101.27
+
+[cinder]
 10.127.101.8
+
+[logger]
 10.127.101.25
+
+[haproxy]
 10.127.101.28

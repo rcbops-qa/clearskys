@@ -1,9 +1,14 @@
 {% extends "rpc_user_config" %}
-ip: {{ hostvars[groups['target_hosts'][5]]['ansible_br_mgmt']['ipv4']['address'] }}
+ip: {{ hostvars[groups['target_hosts']['cinder1']]['ansible_br_mgmt']['ipv4']['address'] }}
 container_vars:
   cinder_backends:
-    limit_container_types: cinder_volume
-    lvm:
-      volume_group: {{ cinder.volume_group }}
-      driver: cinder.volume.drivers.lvm.LVMISCSIDriver
-      backend_name: LVM_iSCSI
+    limit_container_type: cinder_volume
+    netapp:
+      netapp_storage_family: ontap_7mode
+      netapp_storage_protocol: iscsi
+      netapp_server_hostname: "{{ cinder_netapp_hostname }}"
+      netapp_server_port: 80
+      netapp_login: "{{ cinder_netapp_username }}"
+      netapp_password: "{{ cinder_netapp_password }}"
+      driver: cinder.volume.drivers.netapp.common.NetAppDriver
+      backend_name: NETAPP_iSCSI

@@ -1,33 +1,45 @@
 ---
 # User defined CIDR used for containers
 cidr: {{ cidr }}
+{% set infra = groups['infra'] %}
+{% set compute = groups['compute'] %}
+{% set cinder = groups['cinder'] %}
+{% set logger = groups['logger'] %}
+{% set haproxy = groups['haproxy'] %}
 
 # User defined Infrastructure Hosts, this should be a required group
 infra_hosts:
-  infra1:
-    ip: {{ hostvars[groups['deployment_host'][0]]['ansible_br_mgmt']['ipv4']['address'] }}
-  infra2:
-    ip: {{ hostvars[groups['target_hosts'][1]]['ansible_br_mgmt']['ipv4']['address'] }}
-  infra3:
-    ip: {{ hostvars[groups['target_hosts'][2]]['ansible_br_mgmt']['ipv4']['address'] }}
+{% for host in infra %}
+  infra{{ loop.index }}:
+    ip: {{ host }}
+{% endfor %}
 
 # User defined Compute Hosts, this should be a required group
 compute_hosts:
-  compute1:
-    ip: {{ hostvars[groups['target_hosts'][3]]['ansible_br_mgmt']['ipv4']['address'] }}
-  compute2:
-    ip: {{ hostvars[groups['target_hosts'][4]]['ansible_br_mgmt']['ipv4']['address'] }}
+{% for host in compute %}
+  compute{{ loop.index }}:
+    ip: {{ host }}
+{% endfor %}
 
-# User defined Storage Hosts, this should be a required group
-storage_hosts:
-  cinder1:
-    {% block cinder_backend %}{% endblock %}
+# User defined Cinder Hosts, this should be a required group
+cinder_hosts:
+{% for host in cinder %}
+  cinder{{ loop.index }}:
+    ip: {{ host }}
+{% endfor %}
 
-# User defined Logging Hosts, this should be a required group
+# User defined Logger Hosts, this should be a required group
 log_hosts:
-  logger1:
-    ip: {{ hostvars[groups['target_hosts'][6]]['ansible_br_mgmt']['ipv4']['address'] }}
+{% for host in logger %}
+  logger{{ loop.index }}:
+    ip: {{ host }}
+{% endfor %}
 
+# User defined HAProxy Hosts
+{% if haproxy %}
 haproxy_hosts:
-  haproxy1:
-    ip: {{ hostvars[groups['target_hosts'][7]]['ansible_br_mgmt']['ipv4']['address'] }}
+{% for host in haproxy %}
+  haproxy{{ loop.index }}:
+    ip: {{ host }}
+{% endfor %}
+{% endif %}

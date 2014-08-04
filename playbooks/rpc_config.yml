@@ -1,5 +1,5 @@
 ---
-- hosts: deployment_host
+- hosts: deployment
   gather_facts: True
   vars_files:
     - vars/rpc_config.yml

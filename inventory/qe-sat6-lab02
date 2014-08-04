@@ -1,16 +1,24 @@
-[deployment_host]
+[deployment]
 10.127.101.22
 
-[deployment_host:vars]
+[deployment:vars]
 cidr=192.168.2.0/24
-cinder_backend=netapp
+cinder_backends=netapp
 
-[target_hosts]
+[infra]
 10.127.101.22
 10.127.101.17
 10.127.101.24
+
+[compute]
 10.127.101.6
 10.127.101.9
+
+[cinder]
 10.127.101.40
+
+[logger]
 10.127.101.15
+
+[haproxy]
 10.127.101.63

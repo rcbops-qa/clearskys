@@ -1,5 +1,5 @@
 ---
-- hosts: target_hosts
+- hosts: infra:compute:cinder:logger:haproxy
   gather_facts: True
   vars_files:
     - vars/common.yml
