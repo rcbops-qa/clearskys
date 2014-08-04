@@ -22,9 +22,9 @@ compute_hosts:
 storage_hosts:
   cinder1:
     {% if 'lvm' in cinder_backend %}
-      {% block 'lvm' %}{% endblock %}
+      {% block lvm %}{% endblock %}
     {% else %}
-      {% block 'netapp' %}{% endblock %}
+      {% block netapp %}{% endblock %}
     {% endif %}
 
 # User defined Logging Hosts, this should be a required group
