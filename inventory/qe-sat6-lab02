@@ -2,7 +2,7 @@
 10.127.101.22
 
 [deployment_host:vars]
-cidr=10.127.101.0/24
+cidr=192.168.2.0/24
 
 [target_hosts]
 10.127.101.22
