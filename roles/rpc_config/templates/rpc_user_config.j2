@@ -4,8 +4,19 @@
 {% set cinder = groups['cinder'] %}
 {% set logger = groups['logger'] %}
 {% set haproxy = groups['haproxy'] %}
-# User defined CIDR used for containers
-cidr: {{ cidr }}
+# Cider used in the Management network
+mgmt_cidr: {{ mgmt_cidr }}
+
+# Cidr used in the VM network
+vmnet_cidr: {{ vmnet_cidr }}
+
+# overrides anything else any where.
+global_overrides:
+  # Internal Management vip address
+  internal_lb_vip_address: {{ internal_lb_vip_address }}
+  # External DMZ VIP address
+  external_lb_vip_address: {{ external_lb_vip_address }}
+
 
 # User defined Infrastructure Hosts, this should be a required group
 infra_hosts:

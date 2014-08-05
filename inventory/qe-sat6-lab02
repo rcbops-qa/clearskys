@@ -2,7 +2,8 @@
 10.127.101.22
 
 [deployment:vars]
-cidr=10.127.101.128/26
+mgmt_cidr=10.127.101.128/26
+vmnet_cidr=10.127.102.128/25
 cinder_backend=netapp
 lb_vip_address: 10.127.101.63
 
