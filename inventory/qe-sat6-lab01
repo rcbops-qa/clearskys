@@ -4,6 +4,7 @@
 [deployment:vars]
 cidr=10.127.101.64/26
 cinder_backend=lvm
+lb_vip_address: 10.127.101.28
 
 [infra]
 10.127.101.23

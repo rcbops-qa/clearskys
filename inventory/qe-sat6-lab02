@@ -4,6 +4,7 @@
 [deployment:vars]
 cidr=10.127.101.128/26
 cinder_backend=netapp
+lb_vip_address: 10.127.101.63
 
 [infra]
 10.127.101.22
