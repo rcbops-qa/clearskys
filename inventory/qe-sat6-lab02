@@ -5,7 +5,8 @@
 mgmt_cidr=10.127.101.128/26
 vmnet_cidr=10.127.102.128/25
 cinder_backend=netapp
-lb_vip_address: 10.127.101.63
+internal_lb_vip_address=10.127.101.63
+external_lb_vip_address=10.127.101.63
 
 [infra]
 10.127.101.22
