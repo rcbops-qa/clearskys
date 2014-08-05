@@ -2,7 +2,7 @@
 10.127.101.23
 
 [deployment:vars]
-cidr=192.168.1.0/24
+cidr=10.127.101.64/26
 cinder_backend=lvm
 
 [infra]

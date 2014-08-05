@@ -2,7 +2,7 @@
 10.127.101.22
 
 [deployment:vars]
-cidr=192.168.2.0/24
+cidr=10.127.101.128/26
 cinder_backend=netapp
 
 [infra]
