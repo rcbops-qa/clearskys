@@ -1,3 +1,4 @@
+---
 component_skel:
   cinder_api:
     belongs_to:
@@ -84,6 +85,9 @@ component_skel:
     belongs_to:
     - nova_all
   nova_scheduler:
+    belongs_to:
+    - nova_all
+  nova_spice_console:
     belongs_to:
     - nova_all
   rabbit:
@@ -191,6 +195,7 @@ container_skel:
     contains:
     - nova_api_os_compute
   nova_compute_container:
+    is_metal: true
     belongs_to:
     - compute_containers
     contains:
@@ -206,6 +211,11 @@ container_skel:
     - infra_containers
     contains:
     - nova_scheduler
+  nova_spice_console_container:
+    belongs_to:
+    - infra_containers
+    contains:
+    - nova_spice_console
   rabbit_mq_container:
     belongs_to:
     - infra_containers
@@ -217,6 +227,7 @@ container_skel:
     - compute_containers
     - storage_containers
     - log_containers
+    - network_containers
     contains:
     - rsyslog
   utility_container:
