@@ -6,7 +6,7 @@
   file: path=/openstack state=absent
 
 - name: cleanup hosts file
-  lineinfile: regex='container' state=absent
+  lineinfile: dest=/etc/hosts regex='container' state=absent
 
 - name: install packages that are for all hosts
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
