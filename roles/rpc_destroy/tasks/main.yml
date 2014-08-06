@@ -7,4 +7,4 @@
   file: path=/openstack state=absent
 
 - name: cleanup hosts file
-  lineinfile: dest=/etc/hosts regex='container' state=absent
+  lineinfile: dest=/etc/hosts regexp='container' state=absent
