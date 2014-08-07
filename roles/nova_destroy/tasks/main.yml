@@ -1,0 +1,11 @@
+---
+- name: uninstall nova python dependencies
+  pip: requirements=/opt/nova_stable_icehouse/requirements.txt state=absent
+
+- name: remove nova directories
+  file: path={{ item }} state=absent
+  with_items:
+    - /opt/nova_stable_icehouse
+    - /etc/nova
+    - /var/log/nova
+    - /var/lib/nova
