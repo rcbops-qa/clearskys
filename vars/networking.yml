@@ -39,7 +39,7 @@ ubuntu:
     - vmnet
     - br-mgmt
     - br-vmnet
-    - br-exnet
+    - br-ext
 
 # Common Networking Configurations
 network:
@@ -55,9 +55,9 @@ network:
   vmnet:
     bond_name: vmnet
     bridge_name: br-vmnet
-  exnet:
-    bond_name: exnet
-    bridge_name: br-exnet
+  ext:
+    bond_name: vmnet
+    bridge_name: br-ext
   storage:
     bond_name: storage
     bridge_name: br-storage
