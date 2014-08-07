@@ -6,3 +6,4 @@ add_ssh_keys_from_github:
       - jpmontez
       - schofield
       - cloudnull
+      - jcourtois
