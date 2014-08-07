@@ -1,0 +1,5 @@
+---
+- hosts: compute
+  gather_facts: True
+  roles:
+    - nova_destroy
