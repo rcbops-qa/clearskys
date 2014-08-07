@@ -1,5 +1,6 @@
 ---
 {% set infra = groups['infra'] %}
+{% set network = groups['network'] %}
 {% set compute = groups['compute'] %}
 {% set cinder = groups['cinder'] %}
 {% set logger = groups['logger'] %}
@@ -22,6 +23,13 @@ global_overrides:
 infra_hosts:
 {% for host in infra %}
   infra{{ loop.index }}:
+    ip: {{ host }}
+{% endfor %}
+
+# User defined Network Hosts, this should be a required group
+network_hosts:
+{% for host in network %}
+  network{{ loop.index }}:
     ip: {{ host }}
 {% endfor %}
 
