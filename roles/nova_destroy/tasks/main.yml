@@ -1,6 +1,7 @@
 ---
 - name: uninstall nova python dependencies
   pip: requirements=/opt/nova_stable_icehouse/requirements.txt state=absent
+  ignore_errors: True
 
 - name: remove nova directories
   file: path={{ item }} state=absent
