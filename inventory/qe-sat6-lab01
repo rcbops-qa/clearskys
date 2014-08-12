@@ -2,8 +2,8 @@
 10.127.101.23
 
 [deployment:vars]
-mgmt_cidr=10.127.101.128/25
-vmnet_cidr=10.127.102.0/25
+mgmt_cidr=192.168.1.0/24
+vmnet_cidr=172.31.1.0/24
 cinder_backend=lvm
 internal_lb_vip_address=10.127.101.28
 external_lb_vip_address=10.127.101.28
@@ -14,9 +14,7 @@ external_lb_vip_address=10.127.101.28
 10.127.101.18
 
 [network]
-10.127.101.23
 10.127.101.42
-10.127.101.18
 
 [compute]
 10.127.101.58
