@@ -30,7 +30,7 @@
   template: src=interfaces.j2 dest=/etc/network/interfaces owner=root group=root mode=0644
 
 - name: retrieve new ip address
-  local_action: command python cidr.py {{ mgmt_cidr }} {{ ansible_default_ipv4.address }}
+  local_action: script cidr.py {{ mgmt_cidr }} {{ ansible_default_ipv4.address }}
   register: new_ip_address
 
 - name: setup interface config files
