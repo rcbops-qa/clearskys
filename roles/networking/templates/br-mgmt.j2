@@ -11,3 +11,6 @@ iface {{ network.mgmt.bridge_name }} inet static
     bridge_stp off
     bridge_fd 0
     bridge_maxwait 0
+
+iface {{ network.mgmt.bridge_name }} inet static
+    address {{ new_ip_address }}

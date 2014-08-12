@@ -1,7 +1,14 @@
 ---
+- hosts: deployment
+  gather_facts: True
+  roles:
+    - deployment_networking
+
 - hosts: all
   gather_facts: True
   vars_files:
     - vars/networking.yml
   roles:
-    - { role: networking, when: ansible_default_ipv4.interface != "br-mgmt" }
+    - networking
+    # - { role: networking, when: ansible_default_ipv4.interface != "br-mgmt" }
+
