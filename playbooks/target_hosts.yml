@@ -1,8 +1,5 @@
 ---
 - hosts: infra:compute:cinder:logger:haproxy
-  gather_facts: True
-  vars_files:
-    - vars/common.yml
   roles:
     - { role: common, tags: target }
     - update

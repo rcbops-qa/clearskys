@@ -1,7 +1,4 @@
 ---
 - hosts: compute
-  gather_facts: True
-  vars_files:
-    - vars/nova_destroy.yml
   roles:
     - nova_destroy

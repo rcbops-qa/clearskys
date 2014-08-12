@@ -9,4 +9,4 @@
     - openldap_server_country: 'US'
     - openldap_server_state: 'Texas'
     - openldap_server_location: 'San Antonio'
-      - openldap_server_organization: 'RCBOPS-QE'
+    - openldap_server_organization: 'RCBOPS-QE'

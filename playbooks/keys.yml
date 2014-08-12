@@ -1,7 +1,4 @@
 ---
 - hosts: all
-  gather_facts: True
-  vars_files:
-    - vars/keys.yml
   roles:
     - laggyluke.add-ssh-keys-from-github

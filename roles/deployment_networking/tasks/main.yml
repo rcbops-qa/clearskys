@@ -1,3 +1,0 @@
-- name: retrieve new ip address
-  command: python cidr.py {{ mgmt_cidr }} {{ ansible_default_ipv4.address }}
-  register: new_ip_address
