@@ -54,6 +54,8 @@ network:
     bridge_name: br-mgmt
   vmnet:
     bond_name: vmnet
+    vlan_tags:
+      - 10
     bridge_name: br-vmnet
   ext:
     bond_name: vmnet

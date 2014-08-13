@@ -20,3 +20,13 @@ iface {{ network.vmnet.bond_name }} inet manual
     bond-miimon 100
     bond-downdelay 200
     bond-updelay 200
+
+{% if network.vmnet.vlan_tags is defined %}
+{% for vlan_tag in network.vmnet.vlan_tags %}
+# {{ network.vmnet.bond_name }}.{{ vlan_tag }} is the vlan tagged interface for the bond
+auto {{ network.vmnet.bond_name }}.{{ vlan_tag }}
+iface {{ network.vmnet.bond_name }}.{{ vlan_tag }} inet manual
+    up ip link set $IFACE up
+    down ip link set $IFACE down
+{% endfor %}
+{% endif %}
